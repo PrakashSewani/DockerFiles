@@ -13,8 +13,8 @@ services:
       - PAPERCLIP_PUBLIC_URL=http://localhost:3100
       - PAPERCLIP_DEPLOYMENT_MODE=authenticated # options: authenticated / local_trusted
       - PAPERCLIP_DEPLOYMENT_EXPOSURE=private       # options: private / public
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - 'PAPERCLIP_CODEX_PROVIDERS={"providers":{"commandcode":{"name":"CommandCode","base_url":"https://api.commandcode.ai/provider/v1","env_key":"OPENAI_API_KEY","wire_api":"responses"}},"model_provider":"commandcode"}'
+      - PAPERCLIP_ADAPTER_MODELS=${PAPERCLIP_ADAPTER_MODELS:-}
       - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:?Set BETTER_AUTH_SECRET in .env}
     volumes:
       - paperclip_data:/paperclip
